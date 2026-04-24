@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EuroDrop | Sugestões Privadas</title>
     
+    <script>
+        (function() {
+            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         const PASS_CORRETA = "euro2026"; 
+
+            if (sessionStorage.getItem('auth_catalogo') !== 'true') {
+                let tentativa = prompt("Acesso Privado EuroDrop. Insira a palavra-passe:");
+                if (tentativa === PASS_CORRETA) {
+                    sessionStorage.setItem('auth_catalogo', 'true');
+                } else {
+                    alert("Acesso negado.");
+                    window.location.href = "https://eurodrop.pt"; 
+                }
+            }
+        })();
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -20,9 +37,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-
 <body class="font-sans text-gray-800 bg-gray-50 antialiased">
-
     <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -42,7 +57,6 @@
                     </select>
                     
                     <div class="h-6 w-[1px] bg-gray-200 mx-1"></div>
-
                     <button onclick="logout()" class="flex items-center space-x-2 bg-red-50 text-red-600 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-red-100 transition">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span data-pt="Sair" data-en="Logout" data-fr="Quitter">Sair</span>
@@ -60,7 +74,9 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden flex flex-col" data-aos="fade-up">
-                <div class="p-6 flex items-center justify-center"><img src="https://i.postimg.cc/BnzsL2rw/IMG-1400.jpg" class="h-80 w-full object-contain"></div>
+                <div class="p-6 flex items-center justify-center">
+                    <img src="https://i.postimg.cc/BnzsL2rw/IMG-1400.jpg" class="h-80 w-full object-contain">
+                </div>
                 <div class="p-8 flex flex-col flex-grow">
                     <h3 class="font-bold text-xl text-gray-900 mb-3" data-pt="Recipiente de Perfume" data-en="Perfume Container" data-fr="Récipient de Parfum">Recipiente de Perfume</h3>
                     <p class="text-gray-500 text-sm mb-8 flex-grow" data-pt="Recipiente de perfume recarregável de 5ml, disponível em todas as cores." data-en="5ml refillable perfume container, available in all colors." data-fr="Récipient de parfum rechargeable de 5 ml.">Recipiente de perfume recarregável de 5ml, disponível em todas as cores.</p>
@@ -82,7 +98,9 @@
             </div>
 
             <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                <div class="p-6 flex items-center justify-center"><img src="https://i.postimg.cc/3w18MPqy/Balanca-eletronica-de-cozinha.avif" class="h-80 w-full object-contain"></div>
+                <div class="p-6 flex items-center justify-center">
+                    <img src="https://i.postimg.cc/3w18MPqy/Balanca-eletronica-de-cozinha.avif" class="h-80 w-full object-contain">
+                </div>
                 <div class="p-8 flex flex-col flex-grow">
                     <h3 class="font-bold text-xl text-gray-900 mb-3" data-pt="Balança Eletrónica" data-en="Electronic Scale" data-fr="Balance Électronique">Balança Eletrónica</h3>
                     <p class="text-gray-500 text-sm mb-8 flex-grow" data-pt="Balança em formato de colher medidora, até 500g." data-en="Measuring spoon scale, up to 500g." data-fr="Balance cuillère doseuse, jusqu'à 500g.">Balança em formato de colher medidora, até 500g.</p>
@@ -104,7 +122,9 @@
             </div>
 
             <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                <div class="p-6 flex items-center justify-center"><img src="https://i.postimg.cc/VL9LBrFN/Escova-de-limpeza.avif" class="h-80 w-full object-contain"></div>
+                <div class="p-6 flex items-center justify-center">
+                    <img src="https://i.postimg.cc/VL9LBrFN/Escova-de-limpeza.avif" class="h-80 w-full object-contain">
+                </div>
                 <div class="p-8 flex flex-col flex-grow">
                     <h3 class="font-bold text-xl text-gray-900 mb-3" data-pt="Escova Elétrica" data-en="Electric Brush" data-fr="Brosse Électrique">Escova Elétrica</h3>
                     <p class="text-gray-500 text-sm mb-8 flex-grow" data-pt="Escova de limpeza elétrica com 5 pontas e bateria incluída." data-en="Electric cleaning brush with 5 heads." data-fr="Brosse de nettoyage électrique.">Escova de limpeza elétrica com 5 pontas e bateria incluída.</p>
@@ -142,7 +162,10 @@
         function changeCurrency(curr) {
             document.querySelectorAll('.currency-value').forEach(el => el.innerText = el.getAttribute('data-' + curr));
         }
-        function logout() { window.location.href = "https://eurodrop.pt"; }
+        function logout() { 
+            sessionStorage.removeItem('auth_catalogo'); // Limpa a pass ao sair
+            window.location.href = "https://eurodrop.pt"; 
+        }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     </script>
 </body>
