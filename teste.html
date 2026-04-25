@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt" class="scroll-smooth">
 <head>
+    <script>
+        (function() {
+            const PASS_CORRETA = "euro2026"; 
+            if (sessionStorage.getItem('auth_catalogo') !== 'true') {
+                let tentativa = prompt("Acesso Privado EuroDrop. Insira a palavra-passe:");
+                if (tentativa === PASS_CORRETA) {
+                    sessionStorage.setItem('auth_catalogo', 'true');
+                } else {
+                    alert("Acesso negado.");
+                    window.location.replace("https://eurodrop.pt"); 
+                }
+            }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EuroDrop | Painel de Pedidos</title>
