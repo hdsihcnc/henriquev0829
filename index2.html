@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuroDrop | Dashboard Privado</title>
+    
+    <meta name="robots" content="noindex, nofollow">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { brand: '#2563eb', brand_dark: '#1d4ed8', }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased min-h-screen flex flex-col">
+
+    <nav class="w-full bg-white border-b border-gray-100 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="font-bold text-2xl text-gray-900 tracking-tight">
+                Euro<span class="text-brand">Drop</span>
+            </div>
+            <div class="text-[10px] font-black text-gray-400 uppercase tracking-widest bg-gray-100 px-3 py-1 rounded-full">
+                Sourcing Hub v1.0
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-6 py-20">
+        <div class="max-w-4xl w-full">
+            <div class="text-center mb-16" data-aos="fade-down">
+                <h1 class="text-5xl font-black text-gray-900 mb-4 tracking-tighter">Bem-vindo, Parceiro.</h1>
+                <p class="text-gray-500 font-medium">Selecione o módulo que deseja aceder hoje.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <a href="catalogo.html" class="group bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center" data-aos="fade-right">
+                    <div class="w-20 h-20 bg-blue-50 text-brand rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i class="fa-solid fa-layer-group text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 mb-2">Catálogo</h3>
+                    <p class="text-gray-400 text-sm font-medium">Visualize as referências, margens e faça os seus pedidos.</p>
+                </a>
+
+                <a href="teste.html" class="group bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center" data-aos="fade-left">
+                    <div class="w-20 h-20 bg-gray-50 text-gray-400 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i class="fa-solid fa-vial text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 mb-2">Área de Teste</h3>
+                    <p class="text-gray-400 text-sm font-medium">Espaço experimental para novos produtos e protótipos.</p>
+                </a>
+            </div>
+            
+            <div class="mt-20 text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="inline-flex items-center space-x-2 text-gray-400 text-xs font-bold uppercase tracking-widest border border-gray-200 px-4 py-2 rounded-full">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span>Sistemas Online</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-10 text-center text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">
+        &copy; 2026 EuroDrop. Acesso Restrito.
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 1000 });
+    </script>
+</body>
+</html>
