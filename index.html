@@ -7,9 +7,7 @@
     
     <script>
         (function() {
-            
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         const PASS_CORRETA = "euro2026"; 
-
+            const PASS_CORRETA = "euro2026"; 
             if (sessionStorage.getItem('auth_catalogo') !== 'true') {
                 let tentativa = prompt("Acesso Privado EuroDrop. Insira a palavra-passe:");
                 if (tentativa === PASS_CORRETA) {
@@ -73,9 +71,10 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            
             <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden flex flex-col" data-aos="fade-up">
                 <div class="p-6 flex items-center justify-center">
-                    <img src="https://i.postimg.cc/BnzsL2rw/IMG-1400.jpg" class="h-80 w-full object-contain">
+                    <img src="assets/img/perfume-container.jpg" class="h-80 w-full object-contain">
                 </div>
                 <div class="p-8 flex flex-col flex-grow">
                     <h3 class="font-bold text-xl text-gray-900 mb-3" data-pt="Recipiente de Perfume" data-en="Perfume Container" data-fr="Récipient de Parfum">Recipiente de Perfume</h3>
@@ -99,22 +98,22 @@
 
             <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="100">
                 <div class="p-6 flex items-center justify-center">
-                    <img src="https://i.postimg.cc/3w18MPqy/Balanca-eletronica-de-cozinha.avif" class="h-80 w-full object-contain">
+                    <img src="assets/img/electronic-scale.jpg" class="h-80 w-full object-contain">
                 </div>
                 <div class="p-8 flex flex-col flex-grow">
                     <h3 class="font-bold text-xl text-gray-900 mb-3" data-pt="Balança Eletrónica" data-en="Electronic Scale" data-fr="Balance Électronique">Balança Eletrónica</h3>
                     <p class="text-gray-500 text-sm mb-8 flex-grow" data-pt="Balança em formato de colher medidora, até 500g." data-en="Measuring spoon scale, up to 500g." data-fr="Balance cuillère doseuse, jusqu'à 500g.">Balança em formato de colher medidora, até 500g.</p>
                     <div class="space-y-4 pt-6 border-t border-gray-100">
                         <div class="flex justify-between items-center text-[10px] font-bold text-gray-400 uppercase">
-                            <span>CUSTO</span>
+                            <span data-pt="Custo" data-en="Cost" data-fr="Coût">CUSTO</span>
                             <span class="text-brand text-base font-bold currency-value" data-eur="€4.99" data-usd="$5.99">€4.99</span>
                         </div>
                         <div class="flex justify-between items-center text-[10px] font-bold text-gray-400 uppercase">
-                            <span>REVENDA</span>
+                            <span data-pt="Revenda" data-en="Resale" data-fr="Revente">REVENDA</span>
                             <span class="text-gray-900 text-base font-bold currency-value" data-eur="€17.49" data-usd="$20.79">€17.49</span>
                         </div>
-                        <div class="bg-green-50 p-5 rounded-2xl flex flex-col items-center border border-green-100">
-                            <span class="text-[10px] font-black text-green-600 uppercase mb-1">LUCRO ESTIMADO</span>
+                        <div class="bg-green-50 p-5 rounded-2xl flex flex-col items-center border border-green-100 shadow-inner">
+                            <span class="text-[10px] font-black text-green-600 uppercase mb-1" data-pt="Lucro Estimado" data-en="Est. Profit" data-fr="Profit Estimé">LUCRO ESTIMADO</span>
                             <span class="text-green-700 text-3xl font-black currency-value" data-eur="€12.50" data-usd="$14.80">€12.50</span>
                         </div>
                     </div>
@@ -123,22 +122,22 @@
 
             <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
                 <div class="p-6 flex items-center justify-center">
-                    <img src="https://i.postimg.cc/VL9LBrFN/Escova-de-limpeza.avif" class="h-80 w-full object-contain">
+                    <img src="assets/img/electric-brush.jpg" class="h-80 w-full object-contain">
                 </div>
                 <div class="p-8 flex flex-col flex-grow">
                     <h3 class="font-bold text-xl text-gray-900 mb-3" data-pt="Escova Elétrica" data-en="Electric Brush" data-fr="Brosse Électrique">Escova Elétrica</h3>
                     <p class="text-gray-500 text-sm mb-8 flex-grow" data-pt="Escova de limpeza elétrica com 5 pontas e bateria incluída." data-en="Electric cleaning brush with 5 heads." data-fr="Brosse de nettoyage électrique.">Escova de limpeza elétrica com 5 pontas e bateria incluída.</p>
                     <div class="space-y-4 pt-6 border-t border-gray-100">
                         <div class="flex justify-between items-center text-[10px] font-bold text-gray-400 uppercase">
-                            <span>CUSTO</span>
+                            <span data-pt="Custo" data-en="Cost" data-fr="Coût">CUSTO</span>
                             <span class="text-brand text-base font-bold currency-value" data-eur="€9.99" data-usd="$11.99">€9.99</span>
                         </div>
                         <div class="flex justify-between items-center text-[10px] font-bold text-gray-400 uppercase">
-                            <span>REVENDA</span>
+                            <span data-pt="Revenda" data-en="Resale" data-fr="Revente">REVENDA</span>
                             <span class="text-gray-900 text-base font-bold currency-value" data-eur="€34.99" data-usd="$41.29">€34.99</span>
                         </div>
-                        <div class="bg-green-50 p-5 rounded-2xl flex flex-col items-center border border-green-100">
-                            <span class="text-[10px] font-black text-green-600 uppercase mb-1">LUCRO ESTIMADO</span>
+                        <div class="bg-green-50 p-5 rounded-2xl flex flex-col items-center border border-green-100 shadow-inner">
+                            <span class="text-[10px] font-black text-green-600 uppercase mb-1" data-pt="Lucro Estimado" data-en="Est. Profit" data-fr="Profit Estimé">LUCRO ESTIMADO</span>
                             <span class="text-green-700 text-3xl font-black currency-value" data-eur="€25.00" data-usd="$29.30">€25.00</span>
                         </div>
                     </div>
@@ -156,16 +155,24 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true });
+        
         function translatePage(lang) {
-            document.querySelectorAll('[data-' + lang + ']').forEach(el => el.innerText = el.getAttribute('data-' + lang));
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                el.innerText = el.getAttribute('data-' + lang);
+            });
         }
+        
         function changeCurrency(curr) {
-            document.querySelectorAll('.currency-value').forEach(el => el.innerText = el.getAttribute('data-' + curr));
+            document.querySelectorAll('.currency-value').forEach(el => {
+                el.innerText = el.getAttribute('data-' + curr);
+            });
         }
+        
         function logout() { 
-            sessionStorage.removeItem('auth_catalogo'); // Limpa a pass ao sair
+            sessionStorage.removeItem('auth_catalogo');
             window.location.href = "https://eurodrop.pt"; 
         }
+        
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     </script>
 </body>
