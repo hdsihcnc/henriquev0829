@@ -3,11 +3,11 @@
 <head>
     <script>
         (function() {
-            const PASS_CORRETA = "euro2026"; 
+            const CORRECT_PASSWORD = "euro2026"; 
             if (sessionStorage.getItem('auth_catalogo') !== 'true') {
-                let tentativa = prompt("Acesso Privado EuroDrop. Insira a palavra-passe:");
-                if (tentativa === PASS_CORRETA) {
-                    sessionStorage.setItem('auth_catalogo', 'true');
+                let tentativa = prompt("EuroDrop Private Access. Enter the password:");
+                if (tentativa === CORRECT_PASSWORD) {
+                    sessionStorage.setItem('auth_teste', 'true');
                 } else {
                     alert("Acesso negado.");
                     window.location.replace("https://eurodrop.pt"); 
@@ -17,7 +17,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EuroDrop | Catálogo 2x2</title>
+    <title>EuroDrop | Catálogo de Referências</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -61,8 +61,7 @@
             <p class="text-gray-500 text-sm font-medium">Selecione o modelo para detalhes de fornecimento.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10" id="product-grid">
-            
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
             <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p1')" data-aos="fade-up">
                 <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
                     <img src="assets/img/jew-01-grn.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
@@ -90,7 +89,15 @@
                 </div>
                 <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">JEW-04-SERIES</h3>
             </div>
+        </div>
 
+        <div class="flex justify-center">
+            <div class="w-full md:w-1/2 bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p5')" data-aos="fade-up">
+                <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
+                    <img src="assets/img/jew-05-special.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">SPECIAL-CAT-05</h3>
+            </div>
         </div>
     </main>
 
@@ -144,7 +151,7 @@
         <div id="cart-items" class="flex-grow overflow-y-auto space-y-3"></div>
         <form action="https://formspree.io/f/teu_id_aqui" method="POST" id="orderForm" class="mt-10 pt-8 border-t border-gray-100">
             <input type="hidden" name="Pedido" id="form-order-data">
-            <input type="email" name="email" placeholder="Vosso Email" required class="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 mb-4 outline-none focus:ring-2 focus:ring-brand font-bold">
+            <input type="email" name="email" placeholder="Vosso Email" required class="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 mb-4 outline-none focus:ring-2 focus:ring-brand font-bold text-sm">
             <button type="submit" class="w-full bg-gray-900 text-white font-black py-6 rounded-2xl uppercase text-[10px] tracking-[0.3em]">Finalizar</button>
         </form>
     </div>
@@ -157,7 +164,8 @@
             p1: { priceIn: "€2.99", priceOut: "€1.50", variants: [{ sku: "JEW-01-GRN", img: "assets/img/jew-01-grn.jpg" }] },
             p2: { priceIn: "€4.99", priceOut: "€3.00", variants: [{ sku: "JEW-02-GRN", img: "assets/img/jew-02-grn.jpg" }] },
             p3: { priceIn: "€9.99", priceOut: "€6.50", variants: [{ sku: "JEW-03-GRN", img: "assets/img/jew-03-grn.jpg" }] },
-            p4: { priceIn: "€3.50", priceOut: "€2.00", variants: [{ sku: "JEW-04-GRN", img: "assets/img/jew-04-grn.jpg" }] }
+            p4: { priceIn: "€3.50", priceOut: "€2.00", variants: [{ sku: "JEW-04-GRN", img: "assets/img/jew-04-grn.jpg" }] },
+            p5: { priceIn: "€15.00", priceOut: "€10.00", variants: [{ sku: "SPECIAL-05", img: "assets/img/jew-05-special.jpg" }] }
         };
 
         let currentProduct = null;
@@ -205,7 +213,7 @@
             const container = document.getElementById('cart-items');
             container.innerHTML = '';
             cart.forEach((item, index) => {
-                container.innerHTML += `<div class="flex justify-between bg-gray-50 p-5 rounded-2xl border border-gray-100 font-black text-xs uppercase tracking-widest">${item.sku}<button onclick="removeFromCart(${index})" class="text-red-500">Remover</button></div>`;
+                container.innerHTML += `<div class="flex justify-between items-center bg-gray-50 p-5 rounded-2xl border border-gray-100 font-black text-[10px] uppercase tracking-widest">${item.sku}<button onclick="removeFromCart(${index})" class="text-red-500 font-bold">X</button></div>`;
             });
             document.getElementById('cart-count').innerText = cart.length;
             document.getElementById('cart-count').classList.toggle('hidden', cart.length === 0);
