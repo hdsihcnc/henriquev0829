@@ -17,7 +17,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EuroDrop | Painel de Pedidos</title>
+    <title>EuroDrop | Catálogo 2x2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -55,54 +55,40 @@
         </div>
     </nav>
 
-    <main class="pt-28 pb-20 px-4 max-w-7xl mx-auto">
+    <main class="pt-28 pb-20 px-4 max-w-5xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-down">
-            <h2 class="text-4xl md:text-5xl font-black mb-4 tracking-tight text-gray-900 uppercase">Catálogo de Referências</h2>
-            <p class="text-gray-500 max-w-xl mx-auto text-sm font-medium">Selecione o produto para visualizar detalhes e adicionar ao seu pedido.</p>
+            <h2 class="text-4xl font-black mb-4 tracking-tight text-gray-900 uppercase">Referências Ativas</h2>
+            <p class="text-gray-500 text-sm font-medium">Selecione o modelo para detalhes de fornecimento.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="product-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10" id="product-grid">
             
-            <div class="bg-white rounded-[2.5rem] p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p1')" data-aos="fade-up">
-                <div class="bg-gray-50 rounded-[2rem] p-8 mb-6 overflow-hidden">
-                    <img src="assets/img/jew-01-grn.jpg" class="h-64 w-full object-contain group-hover:scale-110 transition-transform duration-500">
+            <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p1')" data-aos="fade-up">
+                <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
+                    <img src="assets/img/jew-01-grn.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
                 </div>
-                <h3 class="font-black text-lg text-gray-400 tracking-widest uppercase text-center">JEW-01-SERIES</h3>
+                <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">JEW-01-SERIES</h3>
             </div>
 
-            <div class="bg-white rounded-[2.5rem] p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p2')" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-gray-50 rounded-[2rem] p-8 mb-6 overflow-hidden">
-                    <img src="assets/img/jew-02-grn.jpg" class="h-64 w-full object-contain group-hover:scale-110 transition-transform duration-500">
+            <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p2')" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
+                    <img src="assets/img/jew-02-grn.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
                 </div>
-                <h3 class="font-black text-lg text-gray-400 tracking-widest uppercase text-center">JEW-02-SERIES</h3>
+                <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">JEW-02-SERIES</h3>
             </div>
 
-            <div class="bg-white rounded-[2.5rem] p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p3')" data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-gray-50 rounded-[2rem] p-8 mb-6 overflow-hidden">
-                    <img src="assets/img/jew-03-grn.jpg" class="h-64 w-full object-contain group-hover:scale-110 transition-transform duration-500">
+            <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p3')" data-aos="fade-up">
+                <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
+                    <img src="assets/img/jew-03-grn.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
                 </div>
-                <h3 class="font-black text-lg text-gray-400 tracking-widest uppercase text-center">JEW-03-SERIES</h3>
+                <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">JEW-03-SERIES</h3>
             </div>
 
-            <div class="bg-white rounded-[2.5rem] p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p4')" data-aos="fade-up">
-                <div class="bg-gray-50 rounded-[2rem] p-8 mb-6 overflow-hidden">
-                    <img src="assets/img/jew-04-grn.jpg" class="h-64 w-full object-contain group-hover:scale-110 transition-transform duration-500">
+            <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p4')" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
+                    <img src="assets/img/jew-04-grn.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
                 </div>
-                <h3 class="font-black text-lg text-gray-400 tracking-widest uppercase text-center">JEW-04-SERIES</h3>
-            </div>
-
-            <div class="bg-white rounded-[2.5rem] p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p5')" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-gray-50 rounded-[2rem] p-8 mb-6 overflow-hidden">
-                    <img src="assets/img/jew-05-grn.jpg" class="h-64 w-full object-contain group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <h3 class="font-black text-lg text-gray-400 tracking-widest uppercase text-center">JEW-05-SERIES</h3>
-            </div>
-
-            <div class="bg-white rounded-[2.5rem] p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p6')" data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-gray-50 rounded-[2rem] p-8 mb-6 overflow-hidden">
-                    <img src="assets/img/jew-06-grn.jpg" class="h-64 w-full object-contain group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <h3 class="font-black text-lg text-gray-400 tracking-widest uppercase text-center">JEW-06-SERIES</h3>
+                <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">JEW-04-SERIES</h3>
             </div>
 
         </div>
@@ -120,26 +106,26 @@
 
             <div class="md:w-2/5 p-8 md:p-16 flex flex-col justify-center bg-white">
                 <div class="max-w-md mx-auto w-full">
-                    <span class="text-brand font-bold text-[10px] uppercase tracking-[0.3em] mb-3 block">Referência Ativa</span>
+                    <span class="text-brand font-bold text-[10px] uppercase tracking-[0.3em] mb-3 block">Referência Selecionada</span>
                     <h3 id="modal-title" class="text-3xl md:text-5xl font-black text-gray-900 mb-10 leading-tight tracking-tighter uppercase">---</h3>
                     
                     <div class="grid grid-cols-1 gap-3 mb-10">
                         <div class="flex justify-between items-center p-5 bg-blue-50/50 rounded-2xl border border-blue-100/50">
-                            <span class="text-[10px] font-black text-brand uppercase tracking-widest">Com Envio Incluído</span>
+                            <span class="text-[10px] font-black text-brand uppercase tracking-widest">Preço Final (c/ Envio)</span>
                             <p id="modal-price-in" class="text-xl font-black text-brand">€0.00</p>
                         </div>
                         <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border border-gray-100">
-                            <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Sem Envio (Base)</span>
+                            <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Preço Base (s/ Envio)</span>
                             <p id="modal-price-out" class="text-xl font-black text-gray-900">€0.00</p>
                         </div>
                     </div>
 
                     <div class="mb-12">
-                        <label class="text-[10px] font-black text-gray-900 uppercase tracking-[0.2em] block mb-5">Variações de Cor (Ref.)</label>
+                        <label class="text-[10px] font-black text-gray-900 uppercase tracking-[0.2em] block mb-5">SKU Variação</label>
                         <div id="variant-options" class="grid grid-cols-2 gap-3"></div>
                     </div>
 
-                    <button onclick="addToCart()" class="w-full bg-brand text-white font-black py-6 rounded-2xl hover:bg-brand_dark transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-2xl shadow-blue-200 flex items-center justify-center gap-4 text-xs tracking-[0.2em]">
+                    <button onclick="addToCart()" class="w-full bg-brand text-white font-black py-6 rounded-2xl hover:bg-brand_dark transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-2xl flex items-center justify-center gap-4 text-xs tracking-[0.2em]">
                         <i class="fa-solid fa-plus text-base"></i>
                         ADICIONAR AO PEDIDO
                     </button>
@@ -150,40 +136,28 @@
 
     <div id="cartPanel" class="fixed inset-y-0 right-0 w-full md:w-[450px] bg-white shadow-2xl z-[80] transform translate-x-full transition-transform duration-500 ease-in-out p-8 flex flex-col border-l border-gray-100">
         <div class="flex justify-between items-center mb-10 pb-6 border-b border-gray-50">
-            <div>
-                <h3 class="text-2xl font-black text-gray-900 tracking-tighter uppercase">Pedido</h3>
-                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">EuroDrop Sourcing</p>
-            </div>
+            <h3 class="text-2xl font-black text-gray-900 tracking-tighter uppercase">Pedido Sourcing</h3>
             <button onclick="toggleCart()" class="bg-gray-50 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition">
                 <i class="fa-solid fa-arrow-right text-gray-400"></i>
             </button>
         </div>
-
-        <div id="cart-items" class="flex-grow overflow-y-auto space-y-3 pr-2"></div>
-
+        <div id="cart-items" class="flex-grow overflow-y-auto space-y-3"></div>
         <form action="https://formspree.io/f/teu_id_aqui" method="POST" id="orderForm" class="mt-10 pt-8 border-t border-gray-100">
-            <input type="hidden" name="Pedido_Lista" id="form-order-data">
-            <div class="mb-6">
-                <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2 ml-1">Vosso Contacto (Email)</label>
-                <input type="email" name="client_email" placeholder="email@exemplo.com" required class="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 outline-none focus:ring-2 focus:ring-brand font-bold text-sm">
-            </div>
-            <button type="submit" class="w-full bg-gray-900 text-white font-black py-6 rounded-2xl hover:bg-brand transition-all shadow-xl uppercase text-[10px] tracking-[0.3em]">
-                Finalizar Pedido
-            </button>
+            <input type="hidden" name="Pedido" id="form-order-data">
+            <input type="email" name="email" placeholder="Vosso Email" required class="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 mb-4 outline-none focus:ring-2 focus:ring-brand font-bold">
+            <button type="submit" class="w-full bg-gray-900 text-white font-black py-6 rounded-2xl uppercase text-[10px] tracking-[0.3em]">Finalizar</button>
         </form>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, duration: 1000 });
+        AOS.init({ once: true });
 
         const products = {
-            p1: { priceIn: "€2.99", priceOut: "€1.50", variants: [{ sku: "JEW-01-GRN", color: "Verde", img: "assets/img/jew-01-grn.jpg" }] },
-            p2: { priceIn: "€4.99", priceOut: "€3.00", variants: [{ sku: "JEW-02-GRN", color: "Verde", img: "assets/img/jew-02-grn.jpg" }] },
-            p3: { priceIn: "€9.99", priceOut: "€6.50", variants: [{ sku: "JEW-03-GRN", color: "Verde", img: "assets/img/jew-03-grn.jpg" }] },
-            p4: { priceIn: "€3.50", priceOut: "€2.00", variants: [{ sku: "JEW-04-GRN", color: "Verde", img: "assets/img/jew-04-grn.jpg" }] },
-            p5: { priceIn: "€5.20", priceOut: "€3.50", variants: [{ sku: "JEW-05-GRN", color: "Verde", img: "assets/img/jew-05-grn.jpg" }] },
-            p6: { priceIn: "€12.00", priceOut: "€8.00", variants: [{ sku: "JEW-06-GRN", color: "Verde", img: "assets/img/jew-06-grn.jpg" }] }
+            p1: { priceIn: "€2.99", priceOut: "€1.50", variants: [{ sku: "JEW-01-GRN", img: "assets/img/jew-01-grn.jpg" }] },
+            p2: { priceIn: "€4.99", priceOut: "€3.00", variants: [{ sku: "JEW-02-GRN", img: "assets/img/jew-02-grn.jpg" }] },
+            p3: { priceIn: "€9.99", priceOut: "€6.50", variants: [{ sku: "JEW-03-GRN", img: "assets/img/jew-03-grn.jpg" }] },
+            p4: { priceIn: "€3.50", priceOut: "€2.00", variants: [{ sku: "JEW-04-GRN", img: "assets/img/jew-04-grn.jpg" }] }
         };
 
         let currentProduct = null;
@@ -197,17 +171,10 @@
             
             const variantContainer = document.getElementById('variant-options');
             variantContainer.innerHTML = '';
-            
             currentProduct.variants.forEach((v) => {
                 const btn = document.createElement('button');
-                btn.className = `flex flex-col items-start p-4 rounded-2xl border-2 transition-all ${v.sku === selectedVariant.sku ? 'border-brand bg-blue-50 text-brand' : 'border-gray-100 text-gray-400 hover:border-gray-200'}`;
-                btn.innerHTML = `<span class="text-[10px] font-black uppercase tracking-tighter">${v.sku}</span>`;
-                btn.onclick = () => {
-                    selectedVariant = v;
-                    updateModalUI();
-                    Array.from(variantContainer.children).forEach(b => b.className = 'flex flex-col items-start p-4 rounded-2xl border-2 border-gray-100 text-gray-400 text-xs font-black transition-all');
-                    btn.className = 'flex flex-col items-start p-4 rounded-2xl border-2 border-brand bg-blue-50 text-brand text-xs font-black transition-all';
-                };
+                btn.className = 'p-4 rounded-2xl border-2 border-brand bg-blue-50 text-brand text-[10px] font-black uppercase';
+                btn.innerHTML = v.sku;
                 variantContainer.appendChild(btn);
             });
 
@@ -219,8 +186,7 @@
             document.getElementById('modal-title').innerText = selectedVariant.sku;
             document.getElementById('modal-price-in').innerText = currentProduct.priceIn;
             document.getElementById('modal-price-out').innerText = currentProduct.priceOut;
-            const modalImg = document.getElementById('modal-img');
-            modalImg.src = selectedVariant.img;
+            document.getElementById('modal-img').src = selectedVariant.img;
         }
 
         function closeModal() {
@@ -229,7 +195,7 @@
         }
 
         function addToCart() {
-            cart.push({ sku: selectedVariant.sku, price: currentProduct.priceIn });
+            cart.push({ sku: selectedVariant.sku });
             updateCartUI();
             closeModal();
             toggleCart(true);
@@ -237,19 +203,12 @@
 
         function updateCartUI() {
             const container = document.getElementById('cart-items');
-            const countBadge = document.getElementById('cart-count');
             container.innerHTML = '';
             cart.forEach((item, index) => {
-                container.innerHTML += `
-                    <div class="flex justify-between items-center bg-gray-50 p-5 rounded-2xl border border-gray-100">
-                        <p class="font-black text-gray-900 text-xs tracking-widest">${item.sku}</p>
-                        <button onclick="removeFromCart(${index})" class="text-gray-300 hover:text-red-500 transition-colors">
-                            <i class="fa-solid fa-trash-can text-sm"></i>
-                        </button>
-                    </div>`;
+                container.innerHTML += `<div class="flex justify-between bg-gray-50 p-5 rounded-2xl border border-gray-100 font-black text-xs uppercase tracking-widest">${item.sku}<button onclick="removeFromCart(${index})" class="text-red-500">Remover</button></div>`;
             });
-            countBadge.innerText = cart.length;
-            countBadge.classList.toggle('hidden', cart.length === 0);
+            document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('cart-count').classList.toggle('hidden', cart.length === 0);
             document.getElementById('form-order-data').value = cart.map(i => i.sku).join(', ');
         }
 
