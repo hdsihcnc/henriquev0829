@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuroDrop | Painel de Pedidos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { brand: '#2563eb', brand_dark: '#1d4ed8', }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scroll { overflow: hidden; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-40 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+            <div class="font-black text-2xl tracking-tighter cursor-pointer" onclick="window.location.href='index.html'">
+                Euro<span class="text-brand">Drop</span>
+            </div>
+            
+            <button onclick="toggleCart()" class="relative bg-gray-100 p-3 rounded-2xl hover:bg-gray-200 transition-all active:scale-95">
+                <i class="fa-solid fa-clipboard-list text-xl text-gray-700"></i>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-brand text-white text-[10px] font-black w-6 h-6 flex items-center justify-center rounded-full border-2 border-white hidden">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-20 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-down">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 tracking-tight text-gray-900 uppercase">Catálogo de Referências</h2>
+            <p class="text-gray-500 max-w-xl mx-auto text-sm font-medium">Selecione o produto para visualizar as métricas de lucro e adicionar ao seu pedido.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="product-grid">
+            <div class="bg-white rounded-[2.5rem] p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p1')" data-aos="fade-up">
+                <div class="bg-gray-50 rounded-[2rem] p-8 mb-6 overflow-hidden">
+                    <img src="https://i.postimg.cc/BnzsL2rw/IMG-1400.jpg" class="h-64 w-full object-contain group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <h3 class="font-black text-lg text-gray-400 tracking-widest uppercase mb-2">JEW-01-SERIES</h3>
+                <div class="flex justify-between items-center mt-4">
+                    <div>
+                        <span class="text-[10px] font-black text-gray-400 uppercase block">Desde</span>
+                        <span class="text-brand font-black text-2xl">€2.99</span>
+                    </div>
+                    <span class="bg-brand/5 text-brand px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest">Configurar</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="productModal" class="fixed inset-0 bg-white z-[60] hidden overflow-y-auto">
+        <button onclick="closeModal()" class="fixed top-6 right-6 z-[70] bg-gray-100 w-12 h-12 rounded-full flex items-center justify-center hover:bg-gray-200 transition shadow-sm">
+            <i class="fa-solid fa-xmark text-xl text-gray-900"></i>
+        </button>
+
+        <div class="flex flex-col md:flex-row min-h-screen">
+            <div class="md:w-3/5 bg-gray-50 flex items-center justify-center p-8 md:p-20 border-r border-gray-100">
+                <img id="modal-img" src="" class="max-w-full max-h-[70vh] object-contain drop-shadow-2xl transition-all duration-500">
+            </div>
+
+            <div class="md:w-2/5 p-8 md:p-16 flex flex-col justify-center bg-white">
+                <div class="max-w-md mx-auto w-full">
+                    <span class="text-brand font-bold text-[10px] uppercase tracking-[0.3em] mb-3 block">Referência Ativa</span>
+                    <h3 id="modal-title" class="text-3xl md:text-5xl font-black text-gray-900 mb-10 leading-tight tracking-tighter uppercase">---</h3>
+                    
+                    <div class="grid grid-cols-1 gap-3 mb-4">
+                        <div class="flex justify-between items-center p-5 bg-blue-50/50 rounded-2xl border border-blue-100/50">
+                            <span class="text-[10px] font-black text-brand uppercase tracking-widest">Com Envio Incluído</span>
+                            <p id="modal-price-in" class="text-xl font-black text-brand">€0.00</p>
+                        </div>
+                        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                            <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Sem Envio (Base)</span>
+                            <p id="modal-price-out" class="text-xl font-black text-gray-900">€0.00</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mb-10">
+                        <div class="p-5 bg-gray-900 rounded-2xl shadow-xl">
+                            <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">Revenda</span>
+                            <p id="modal-resale" class="text-xl font-black text-white mt-1">€0.00</p>
+                        </div>
+                        <div class="p-5 bg-green-50 rounded-2xl border border-green-100">
+                            <span class="text-[9px] font-black text-green-600 uppercase tracking-widest">Lucro</span>
+                            <p id="modal-profit" class="text-xl font-black text-green-600 mt-1">€0.00</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-12">
+                        <label class="text-[10px] font-black text-gray-900 uppercase tracking-[0.2em] block mb-5">Variações de Cor (Ref.)</label>
+                        <div id="variant-options" class="grid grid-cols-2 gap-3"></div>
+                    </div>
+
+                    <button onclick="addToCart()" class="w-full bg-brand text-white font-black py-6 rounded-2xl hover:bg-brand_dark transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-2xl shadow-blue-200 flex items-center justify-center gap-4 text-xs tracking-[0.2em]">
+                        <i class="fa-solid fa-plus text-base"></i>
+                        ADICIONAR AO PEDIDO
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cartPanel" class="fixed inset-y-0 right-0 w-full md:w-[450px] bg-white shadow-2xl z-[80] transform translate-x-full transition-transform duration-500 ease-in-out p-8 flex flex-col border-l border-gray-100">
+        <div class="flex justify-between items-center mb-10 pb-6 border-b border-gray-50">
+            <div>
+                <h3 class="text-2xl font-black text-gray-900 tracking-tighter uppercase">Pedido</h3>
+                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">EuroDrop Sourcing</p>
+            </div>
+            <button onclick="toggleCart()" class="bg-gray-50 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition">
+                <i class="fa-solid fa-arrow-right text-gray-400"></i>
+            </button>
+        </div>
+
+        <div id="cart-items" class="flex-grow overflow-y-auto space-y-3 pr-2"></div>
+
+        <form action="https://formspree.io/f/teu_id_aqui" method="POST" id="orderForm" class="mt-10 pt-8 border-t border-gray-100">
+            <input type="hidden" name="Pedido_Lista" id="form-order-data">
+            <div class="mb-6">
+                <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2 ml-1">Vosso Contacto (Email)</label>
+                <input type="email" name="client_email" placeholder="email@exemplo.com" required class="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 outline-none focus:ring-2 focus:ring-brand font-bold text-sm">
+            </div>
+            <button type="submit" class="w-full bg-gray-900 text-white font-black py-6 rounded-2xl hover:bg-brand transition-all shadow-xl uppercase text-[10px] tracking-[0.3em]">
+                Finalizar Pedido
+            </button>
+        </form>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 1000 });
+
+        const products = {
+            p1: {
+                priceIn: "€2.99",
+                priceOut: "€1.50",
+                resale: "€12.99",
+                profit: "€10.00",
+                variants: [
+                    { sku: "JEW-01-BLU", color: "Azul Matte", img: "https://i.postimg.cc/BnzsL2rw/IMG-1400.jpg" },
+                    { sku: "JEW-01-RED", color: "Vermelho Rubi", img: "https://i.postimg.cc/BnzsL2rw/IMG-1400.jpg" },
+                    { sku: "JEW-01-GRN", color: "Verde Esmeralda", img: "https://i.postimg.cc/BnzsL2rw/IMG-1400.jpg" },
+                    { sku: "JEW-01-SLV", color: "Prata Chrome", img: "https://i.postimg.cc/BnzsL2rw/IMG-1400.jpg" }
+                ]
+            }
+        };
+
+        let currentProduct = null;
+        let selectedVariant = null;
+        let cart = [];
+
+        function openModal(id) {
+            currentProduct = products[id];
+            selectedVariant = currentProduct.variants[0];
+            
+            updateModalUI();
+            
+            const variantContainer = document.getElementById('variant-options');
+            variantContainer.innerHTML = '';
+            
+            currentProduct.variants.forEach((v) => {
+                const btn = document.createElement('button');
+                btn.className = `flex flex-col items-start p-4 rounded-2xl border-2 transition-all ${v.sku === selectedVariant.sku ? 'border-brand bg-blue-50 text-brand' : 'border-gray-100 text-gray-400 hover:border-gray-200'}`;
+                btn.innerHTML = `
+                    <span class="text-[10px] font-black uppercase tracking-tighter">${v.sku}</span>
+                    <span class="text-[9px] font-medium opacity-60">${v.color}</span>
+                `;
+                btn.onclick = () => {
+                    selectedVariant = v;
+                    updateModalUI();
+                    Array.from(variantContainer.children).forEach(b => b.className = 'flex flex-col items-start p-4 rounded-2xl border-2 border-gray-100 text-gray-400 text-xs font-black transition-all');
+                    btn.className = 'flex flex-col items-start p-4 rounded-2xl border-2 border-brand bg-blue-50 text-brand text-xs font-black transition-all';
+                };
+                variantContainer.appendChild(btn);
+            });
+
+            document.getElementById('productModal').classList.remove('hidden');
+            document.body.classList.add('no-scroll');
+        }
+
+        function updateModalUI() {
+            document.getElementById('modal-title').innerText = selectedVariant.sku;
+            document.getElementById('modal-price-in').innerText = currentProduct.priceIn;
+            document.getElementById('modal-price-out').innerText = currentProduct.priceOut;
+            document.getElementById('modal-resale').innerText = currentProduct.resale;
+            document.getElementById('modal-profit').innerText = currentProduct.profit;
+            
+            const modalImg = document.getElementById('modal-img');
+            modalImg.style.opacity = '0';
+            setTimeout(() => {
+                modalImg.src = selectedVariant.img;
+                modalImg.style.opacity = '1';
+            }, 200);
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+            document.body.classList.remove('no-scroll');
+        }
+
+        function addToCart() {
+            const item = {
+                sku: selectedVariant.sku,
+                color: selectedVariant.color,
+                price: currentProduct.priceIn,
+                id: Date.now()
+            };
+            cart.push(item);
+            updateCartUI();
+            closeModal();
+            toggleCart(true);
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const countBadge = document.getElementById('cart-count');
+            container.innerHTML = '';
+            
+            cart.forEach((item, index) => {
+                container.innerHTML += `
+                    <div class="flex justify-between items-center bg-gray-50 p-5 rounded-2xl border border-gray-100 group">
+                        <div>
+                            <p class="font-black text-gray-900 text-xs tracking-widest">${item.sku}</p>
+                            <p class="text-[9px] text-brand font-black uppercase tracking-widest mt-1">${item.color}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-gray-300 hover:text-red-500 transition-colors">
+                            <i class="fa-solid fa-trash-can text-sm"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            countBadge.innerText = cart.length;
+            countBadge.classList.toggle('hidden', cart.length === 0);
+            
+            const summary = cart.map(i => `${i.sku} (${i.color})`).join('\n');
+            document.getElementById('form-order-data').value = summary;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart(open = null) {
+            const panel = document.getElementById('cartPanel');
+            if (open === true) panel.classList.remove('translate-x-full');
+            else if (open === false) panel.classList.add('translate-x-full');
+            else panel.classList.toggle('translate-x-full');
+        }
+    </script>
+</body>
+</html>
