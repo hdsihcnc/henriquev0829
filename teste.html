@@ -7,7 +7,7 @@
             if (sessionStorage.getItem('auth_catalogo') !== 'true') {
                 let tentativa = prompt("EuroDrop Private Access. Enter the password:");
                 if (tentativa === CORRECT_PASSWORD) {
-                    sessionStorage.setItem('auth_teste', 'true');
+                    sessionStorage.setItem('auth_catalogo', 'true');
                 } else {
                     alert("Acesso negado.");
                     window.location.replace("https://eurodrop.pt"); 
@@ -69,7 +69,7 @@
                 <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">JEW-01-SERIES</h3>
             </div>
 
-            <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p2')" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p2')" data-aos="fade-up">
                 <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
                     <img src="assets/img/jew-02-grn.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
                 </div>
@@ -83,7 +83,7 @@
                 <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">JEW-03-SERIES</h3>
             </div>
 
-            <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p4')" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p4')" data-aos="fade-up">
                 <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
                     <img src="assets/img/jew-04-grn.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
                 </div>
@@ -128,7 +128,7 @@
                     </div>
 
                     <div class="mb-12">
-                        <label class="text-[10px] font-black text-gray-900 uppercase tracking-[0.2em] block mb-5">SKU Variação</label>
+                        <label class="text-[10px] font-black text-gray-900 uppercase tracking-[0.2em] block mb-5">Variações Disponíveis</label>
                         <div id="variant-options" class="grid grid-cols-2 gap-3"></div>
                     </div>
 
@@ -161,40 +161,88 @@
         AOS.init({ once: true });
 
         const products = {
-            p1: { priceIn: "€2.99", priceOut: "€1.50", variants: [{ sku: "JEW-01-GRN", img: "assets/img/jew-01-grn.jpg" }] },
-            p2: { priceIn: "€4.99", priceOut: "€3.00", variants: [{ sku: "JEW-02-GRN", img: "assets/img/jew-02-grn.jpg" }] },
-            p3: { priceIn: "€9.99", priceOut: "€6.50", variants: [{ sku: "JEW-03-GRN", img: "assets/img/jew-03-grn.jpg" }] },
-            p4: { priceIn: "€3.50", priceOut: "€2.00", variants: [{ sku: "JEW-04-GRN", img: "assets/img/jew-04-grn.jpg" }] },
-            p5: { priceIn: "€15.00", priceOut: "€10.00", variants: [{ sku: "JEW-05-GRN", img: "assets/img/jew-05-grn.jpg" }] }
+            p1: { 
+                priceIn: "€2.99", priceOut: "€1.50", 
+                variants: [
+                    { sku: "JEW-01-GRN", img: "assets/img/jew-01-grn.jpg" },
+                    { sku: "JEW-01-BLU", img: "assets/img/jew-01-blu.jpg" }
+                ] 
+            },
+            p2: { 
+                priceIn: "€4.99", priceOut: "€3.00", 
+                variants: [
+                    { sku: "JEW-02-GRN", img: "assets/img/jew-02-grn.jpg" },
+                    { sku: "JEW-02-RED", img: "assets/img/jew-02-red.jpg" }
+                ] 
+            },
+            p3: { 
+                priceIn: "€9.99", priceOut: "€6.50", 
+                variants: [
+                    { sku: "JEW-03-GRN", img: "assets/img/jew-03-grn.jpg" },
+                    { sku: "JEW-03-BLK", img: "assets/img/jew-03-blk.jpg" }
+                ] 
+            },
+            p4: { 
+                priceIn: "€3.50", priceOut: "€2.00", 
+                variants: [
+                    { sku: "JEW-04-GRN", img: "assets/img/jew-04-grn.jpg" },
+                    { sku: "JEW-04-WHT", img: "assets/img/jew-04-wht.jpg" }
+                ] 
+            },
+            p5: { 
+                priceIn: "€15.00", priceOut: "€10.00", 
+                variants: [
+                    { sku: "JEW-05-GRN", img: "assets/img/jew-05-grn.jpg" },
+                    { sku: "JEW-05-BLU", img: "assets/img/jew-05-blu.jpg" },
+                    { sku: "JEW-05-GLD", img: "assets/img/jew-05-gld.jpg" }
+                ] 
+            }
         };
 
-        let currentProduct = null;
+        let currentProductData = null;
         let selectedVariant = null;
         let cart = [];
 
         function openModal(id) {
-            currentProduct = products[id];
-            selectedVariant = currentProduct.variants[0];
-            updateModalUI();
+            currentProductData = products[id];
+            selectVariant(0); // Seleciona a primeira variante por padrão
             
             const variantContainer = document.getElementById('variant-options');
             variantContainer.innerHTML = '';
-            currentProduct.variants.forEach((v) => {
+            
+            currentProductData.variants.forEach((v, index) => {
                 const btn = document.createElement('button');
-                btn.className = 'p-4 rounded-2xl border-2 border-brand bg-blue-50 text-brand text-[10px] font-black uppercase';
+                btn.id = `v-btn-${index}`;
+                btn.className = 'variant-btn p-4 rounded-2xl border-2 border-gray-100 bg-white text-gray-400 text-[10px] font-black uppercase transition-all hover:border-brand hover:text-brand';
                 btn.innerHTML = v.sku;
+                btn.onclick = () => selectVariant(index);
                 variantContainer.appendChild(btn);
             });
 
+            updateButtonStyles(0);
             document.getElementById('productModal').classList.remove('hidden');
             document.body.classList.add('no-scroll');
         }
 
-        function updateModalUI() {
+        function selectVariant(index) {
+            selectedVariant = currentProductData.variants[index];
             document.getElementById('modal-title').innerText = selectedVariant.sku;
-            document.getElementById('modal-price-in').innerText = currentProduct.priceIn;
-            document.getElementById('modal-price-out').innerText = currentProduct.priceOut;
             document.getElementById('modal-img').src = selectedVariant.img;
+            document.getElementById('modal-price-in').innerText = currentProductData.priceIn;
+            document.getElementById('modal-price-out').innerText = currentProductData.priceOut;
+            updateButtonStyles(index);
+        }
+
+        function updateButtonStyles(selectedIndex) {
+            document.querySelectorAll('.variant-btn').forEach((btn, idx) => {
+                if (idx === selectedIndex) {
+                    btn.classList.add('border-brand', 'bg-blue-50', 'text-brand');
+                    btn.classList.remove('border-gray-100', 'bg-white', 'text-gray-400');
+                } else {
+                    btn.classList.remove('border-brand', 'bg-blue-50', 'text-brand');
+                    btn.classList.add('border-gray-100', 'bg-white', 'text-gray-400');
+                }
+            });
         }
 
         function closeModal() {
