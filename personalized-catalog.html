@@ -40,7 +40,7 @@
         ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
 
     <nav class="fixed w-full bg-white/90 backdrop-blur-md z-40 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
@@ -75,7 +75,7 @@
         </div>
     </nav>
 
-    <main class="pt-28 pb-20 px-4 max-w-5xl mx-auto">
+    <main class="pt-28 pb-20 px-4 max-w-5xl mx-auto flex-grow">
         <div class="text-center mb-12" data-aos="fade-down">
             <h2 id="txt-title" class="text-4xl font-black mb-4 tracking-tight text-gray-900 uppercase italic">Produtos Sugeridos</h2>
             <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full border border-green-100 shadow-sm">
@@ -120,6 +120,18 @@
             </div>
         </div>
     </main>
+
+    <footer class="bg-white border-t border-gray-100 pt-12 pb-8 text-center">
+        <div class="font-black text-xl text-gray-900 mb-4 tracking-tighter uppercase italic">
+            Euro<span class="text-brand">Drop</span>
+        </div>
+        <a href="mailto:geral@eurodrop.pt" class="inline-flex items-center text-gray-500 hover:text-brand transition-colors mb-6 font-bold text-xs uppercase tracking-widest">
+            <i class="fa-regular fa-envelope mr-2 text-brand"></i>geral@eurodrop.pt
+        </a>
+        <div class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.3em]">
+            &copy; 2026 EuroDrop. Conteúdo Confidencial.
+        </div>
+    </footer>
 
     <div id="productModal" class="fixed inset-0 bg-white z-[60] hidden overflow-y-auto">
         <button onclick="closeModal()" class="fixed top-6 right-6 z-[70] bg-gray-100 w-12 h-12 rounded-full flex items-center justify-center hover:bg-gray-200 transition shadow-sm">
@@ -251,8 +263,11 @@
             document.getElementById('txt-logout').innerText = t.logout;
             
             ['pt', 'en', 'fr'].forEach(l => {
-                document.getElementById(`lang-${l}`).classList.toggle('bg-white', l === lang);
-                document.getElementById(`lang-${l}`).classList.toggle('shadow-sm', l === lang);
+                const el = document.getElementById(`lang-${l}`);
+                if(el){
+                    el.classList.toggle('bg-white', l === lang);
+                    el.classList.toggle('shadow-sm', l === lang);
+                }
             });
             updateCartUI();
         }
@@ -419,7 +434,7 @@
             });
         });
 
-        setLanguage('pt');
+        setLanguage('en');
     </script>
 </body>
 </html>
