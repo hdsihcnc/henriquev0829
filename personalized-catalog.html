@@ -64,19 +64,20 @@
                     <i class="fa-solid fa-clipboard-list text-xl text-gray-700"></i>
                     <span id="cart-count" class="absolute -top-2 -right-2 bg-brand text-white text-[10px] font-black w-6 h-6 flex items-center justify-center rounded-full border-2 border-white hidden">0</span>
                 </button>
+
+                <div class="h-6 w-[1px] bg-gray-200 mx-1"></div>
+
+                <button onclick="logout()" class="flex items-center gap-2 bg-red-50 text-red-600 px-3 py-2 rounded-xl text-[10px] font-black uppercase hover:bg-red-100 transition active:scale-95">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span id="txt-logout">Sair</span>
+                </button>
             </div>
-                            <div class="h-6 w-[1px] bg-gray-200 mx-1"></div>
-                    <button onclick="logout()" class="flex items-center space-x-2 bg-red-50 text-red-600 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-red-100 transition">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <span data-pt="Sair" data-en="Logout" data-fr="Quitter">Sair</span>
-                    </button>
-                </div>
         </div>
     </nav>
 
     <main class="pt-28 pb-20 px-4 max-w-5xl mx-auto">
         <div class="text-center mb-12" data-aos="fade-down">
-            <h2 id="txt-title" class="text-4xl font-black mb-4 tracking-tight text-gray-900 uppercase">Produtos Sugeridos</h2>
+            <h2 id="txt-title" class="text-4xl font-black mb-4 tracking-tight text-gray-900 uppercase italic">Produtos Sugeridos</h2>
             <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full border border-green-100 shadow-sm">
                 <i class="fa-solid fa-truck-fast text-xs"></i>
                 <span id="txt-free-shipping" class="text-[10px] font-black uppercase tracking-wider">Entrega grátis para toda a Europa</span>
@@ -193,7 +194,8 @@
                 empty: "O carrinho está vazio!",
                 product: "Produto",
                 model: "Modelo",
-                qty: "Qtd"
+                qty: "Qtd",
+                logout: "Sair"
             },
             en: {
                 title: "Suggested Products",
@@ -210,7 +212,8 @@
                 empty: "Cart is empty!",
                 product: "Product",
                 model: "Model",
-                qty: "Qty"
+                qty: "Qty",
+                logout: "Logout"
             },
             fr: {
                 title: "Produits Suggérés",
@@ -227,7 +230,8 @@
                 empty: "Le panier est vide!",
                 product: "Produit",
                 model: "Modèle",
-                qty: "Qté"
+                qty: "Qté",
+                logout: "Quitter"
             }
         };
 
@@ -244,6 +248,7 @@
             document.getElementById('txt-add-cart').innerText = t.addCart;
             document.getElementById('txt-cart-title').innerText = t.cartTitle;
             document.getElementById('submit-btn').innerText = t.finish;
+            document.getElementById('txt-logout').innerText = t.logout;
             
             ['pt', 'en', 'fr'].forEach(l => {
                 document.getElementById(`lang-${l}`).classList.toggle('bg-white', l === lang);
@@ -365,6 +370,11 @@
             else panel.classList.toggle('translate-x-full');
         }
 
+        function logout() {
+            sessionStorage.removeItem('auth_catalogo');
+            window.location.replace("https://eurodrop.pt");
+        }
+
         const form = document.getElementById("orderForm");
         form.addEventListener("submit", async function(event) {
             event.preventDefault();
@@ -409,7 +419,7 @@
             });
         });
 
-        setLanguage('en');
+        setLanguage('pt');
     </script>
 </body>
 </html>
