@@ -17,7 +17,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EuroDrop | Catálogo de Referências</title>
+    <title>EuroDrop | Catálogo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -44,8 +44,13 @@
 
     <nav class="fixed w-full bg-white/90 backdrop-blur-md z-40 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
-            <div class="font-black text-2xl tracking-tighter cursor-pointer" onclick="window.location.href='index.html'">
-                Euro<span class="text-brand">Drop</span>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="bg-gray-100 p-3 rounded-2xl hover:bg-gray-200 transition-all active:scale-95 text-gray-700">
+                    <i class="fa-solid fa-house text-lg"></i>
+                </a>
+                <div class="font-black text-2xl tracking-tighter cursor-pointer" onclick="window.location.href='index.html'">
+                    Euro<span class="text-brand">Drop</span>
+                </div>
             </div>
             
             <button onclick="toggleCart()" class="relative bg-gray-100 p-3 rounded-2xl hover:bg-gray-200 transition-all active:scale-95">
@@ -57,8 +62,7 @@
 
     <main class="pt-28 pb-20 px-4 max-w-5xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-down">
-            <h2 class="text-4xl font-black mb-4 tracking-tight text-gray-900 uppercase">Referências Ativas</h2>
-            <p class="text-gray-500 text-sm font-medium">Selecione o modelo para detalhes de fornecimento.</p>
+            <h2 class="text-4xl font-black mb-4 tracking-tight text-gray-900 uppercase">Produtos Sugeridos</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
@@ -68,21 +72,18 @@
                 </div>
                 <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">JEW-01-SERIES</h3>
             </div>
-
             <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p2')" data-aos="fade-up">
                 <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
                     <img src="assets/img/jew-02-grn.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
                 </div>
                 <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">JEW-02-SERIES</h3>
             </div>
-
             <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p3')" data-aos="fade-up">
                 <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
                     <img src="assets/img/jew-03-grn.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
                 </div>
                 <h3 class="font-black text-xl text-gray-400 tracking-widest uppercase text-center">JEW-03-SERIES</h3>
             </div>
-
             <div class="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group" onclick="openModal('p4')" data-aos="fade-up">
                 <div class="bg-gray-50 rounded-[2rem] p-10 mb-6 overflow-hidden text-center">
                     <img src="assets/img/jew-04-grn.jpg" class="h-72 w-full object-contain group-hover:scale-110 transition-transform duration-500">
@@ -121,10 +122,6 @@
                             <span class="text-[10px] font-black text-brand uppercase tracking-widest">Preço Final (c/ Envio)</span>
                             <p id="modal-price-in" class="text-xl font-black text-brand">€0.00</p>
                         </div>
-                        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border border-gray-100">
-                            <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Preço Base (s/ Envio)</span>
-                            <p id="modal-price-out" class="text-xl font-black text-gray-900">€0.00</p>
-                        </div>
                     </div>
 
                     <div class="mb-12">
@@ -148,11 +145,14 @@
                 <i class="fa-solid fa-arrow-right text-gray-400"></i>
             </button>
         </div>
+
         <div id="cart-items" class="flex-grow overflow-y-auto space-y-3"></div>
-        <form action="https://formspree.io/f/teu_id_aqui" method="POST" id="orderForm" class="mt-10 pt-8 border-t border-gray-100">
-            <input type="hidden" name="Pedido" id="form-order-data">
-            <input type="email" name="email" placeholder="Vosso Email" required class="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 mb-4 outline-none focus:ring-2 focus:ring-brand font-bold text-sm">
-            <button type="submit" class="w-full bg-gray-900 text-white font-black py-6 rounded-2xl uppercase text-[10px] tracking-[0.3em]">Finalizar</button>
+
+        <form id="orderForm" class="mt-10 pt-8 border-t border-gray-100">
+            <input type="hidden" name="Lista de Pedidos" id="form-order-data">
+            <input type="email" name="email" id="user-email" placeholder="Vosso Email" required class="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 mb-4 outline-none focus:ring-2 focus:ring-brand font-bold text-sm">
+            <button type="submit" id="submit-btn" class="w-full bg-gray-900 text-white font-black py-6 rounded-2xl uppercase text-[10px] tracking-[0.3em]">Finalizar Pedido</button>
+            <p id="form-status" class="mt-4 text-center text-xs font-bold uppercase hidden"></p>
         </form>
     </div>
 
@@ -161,50 +161,11 @@
         AOS.init({ once: true });
 
         const products = {
-            p1: { 
-                priceIn: "€2.99", priceOut: "€1.50", 
-                variants: [
-                    { sku: "JEW-01-GRN", img: "assets/img/jew-01-grn.jpg" },
-                    { sku: "JEW-01-GRY", img: "assets/img/jew-01-gry.jpg" },
-                    { sku: "JEW-01-RED", img: "assets/img/jew-01-red.jpg" }
-                ] 
-            },
-            p2: { 
-                priceIn: "€4.99", priceOut: "€3.00", 
-                variants: [
-                    { sku: "JEW-02-GRN", img: "assets/img/jew-02-grn.jpg" },
-                    { sku: "JEW-02-GRY", img: "assets/img/jew-02-gry.jpg" },
-                    { sku: "JEW-02-RED", img: "assets/img/jew-02-red.jpg" },
-                    { sku: "JEW-02-BLK", img: "assets/img/jew-02-blk.jpg" }
-                ] 
-            },
-            p3: { 
-                priceIn: "€9.99", priceOut: "€6.50", 
-                variants: [
-                    { sku: "JEW-03-GRN", img: "assets/img/jew-03-grn.jpg" },
-                    { sku: "JEW-03-GRY", img: "assets/img/jew-03-gry.jpg" },
-                    { sku: "JEW-03-RED", img: "assets/img/jew-03-red.jpg" },
-                    { sku: "JEW-03-BLK", img: "assets/img/jew-03-blk.jpg" }
-                ] 
-            },
-            p4: { 
-                priceIn: "€3.50", priceOut: "€2.00", 
-                variants: [
-                    { sku: "JEW-04-GRN", img: "assets/img/jew-04-grn.jpg" },
-                    { sku: "JEW-04-GRY", img: "assets/img/jew-04-gry.jpg" },
-                    { sku: "JEW-04-RED", img: "assets/img/jew-04-red.jpg" },
-                    { sku: "JEW-04-BLU", img: "assets/img/jew-04-blu.jpg" }
-                ] 
-            },
-            p5: { 
-                priceIn: "€15.00", priceOut: "€10.00", 
-                variants: [
-                    { sku: "JEW-05-GRN", img: "assets/img/jew-05-grn.jpg" },
-                    { sku: "JEW-05-PNK", img: "assets/img/jew-05-pnk.jpg" },
-                    { sku: "JEW-05-WH", img: "assets/img/jew-05-wh.jpg" },
-                    { sku: "JEW-05-BLK", img: "assets/img/jew-05-blk.jpg" }
-                ] 
-            }
+            p1: { name: "JEW-01", priceIn: "€2.99", priceOut: "€1.50", variants: [{ sku: "JEW-01-GRN", img: "assets/img/jew-01-grn.jpg" }, { sku: "JEW-01-GRY", img: "assets/img/jew-01-gry.jpg" }, { sku: "JEW-01-RED", img: "assets/img/jew-01-red.jpg" }] },
+            p2: { name: "JEW-02", priceIn: "€4.99", priceOut: "€3.00", variants: [{ sku: "JEW-02-GRN", img: "assets/img/jew-02-grn.jpg" }, { sku: "JEW-02-GRY", img: "assets/img/jew-02-gry.jpg" }, { sku: "JEW-02-RED", img: "assets/img/jew-02-red.jpg" }, { sku: "JEW-02-BLK", img: "assets/img/jew-02-blk.jpg" }] },
+            p3: { name: "JEW-03", priceIn: "€9.99", priceOut: "€6.50", variants: [{ sku: "JEW-03-GRN", img: "assets/img/jew-03-grn.jpg" }, { sku: "JEW-03-GRY", img: "assets/img/jew-03-gry.jpg" }, { sku: "JEW-03-RED", img: "assets/img/jew-03-red.jpg" }, { sku: "JEW-03-BLK", img: "assets/img/jew-03-blk.jpg" }] },
+            p4: { name: "JEW-04", priceIn: "€3.50", priceOut: "€2.00", variants: [{ sku: "JEW-04-GRN", img: "assets/img/jew-04-grn.jpg" }, { sku: "JEW-04-GRY", img: "assets/img/jew-04-gry.jpg" }, { sku: "JEW-04-RED", img: "assets/img/jew-04-red.jpg" }, { sku: "JEW-04-BLK", img: "assets/img/jew-04-blk.jpg" }] },
+            p5: { name: "JEW-05", priceIn: "€15.00", priceOut: "€10.00", variants: [{ sku: "JEW-05-GRN", img: "assets/img/jew-05-grn.jpg" }, { sku: "JEW-05-PNK", img: "assets/img/jew-05-pnk.jpg" }, { sku: "JEW-05-WH", img: "assets/img/jew-05-wh.jpg" }, { sku: "JEW-05-BLK", img: "assets/img/jew-05-blk.jpg" }] }
         };
 
         let currentProductData = null;
@@ -213,20 +174,18 @@
 
         function openModal(id) {
             currentProductData = products[id];
-            selectVariant(0); // Seleciona a primeira variante por padrão
+            selectVariant(0);
             
             const variantContainer = document.getElementById('variant-options');
             variantContainer.innerHTML = '';
             
             currentProductData.variants.forEach((v, index) => {
                 const btn = document.createElement('button');
-                btn.id = `v-btn-${index}`;
                 btn.className = 'variant-btn p-4 rounded-2xl border-2 border-gray-100 bg-white text-gray-400 text-[10px] font-black uppercase transition-all hover:border-brand hover:text-brand';
                 btn.innerHTML = v.sku;
                 btn.onclick = () => selectVariant(index);
                 variantContainer.appendChild(btn);
             });
-
             updateButtonStyles(0);
             document.getElementById('productModal').classList.remove('hidden');
             document.body.classList.add('no-scroll');
@@ -237,7 +196,6 @@
             document.getElementById('modal-title').innerText = selectedVariant.sku;
             document.getElementById('modal-img').src = selectedVariant.img;
             document.getElementById('modal-price-in').innerText = currentProductData.priceIn;
-            document.getElementById('modal-price-out').innerText = currentProductData.priceOut;
             updateButtonStyles(index);
         }
 
@@ -259,7 +217,16 @@
         }
 
         function addToCart() {
-            cart.push({ sku: selectedVariant.sku });
+            const existing = cart.find(i => i.sku === selectedVariant.sku);
+            if(existing) {
+                existing.qty++;
+            } else {
+                cart.push({ 
+                    name: currentProductData.name, 
+                    sku: selectedVariant.sku, 
+                    qty: 1 
+                });
+            }
             updateCartUI();
             closeModal();
             toggleCart(true);
@@ -269,11 +236,34 @@
             const container = document.getElementById('cart-items');
             container.innerHTML = '';
             cart.forEach((item, index) => {
-                container.innerHTML += `<div class="flex justify-between items-center bg-gray-50 p-5 rounded-2xl border border-gray-100 font-black text-[10px] uppercase tracking-widest">${item.sku}<button onclick="removeFromCart(${index})" class="text-red-500 font-bold">X</button></div>`;
+                container.innerHTML += `
+                    <div class="flex justify-between items-center bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] font-black text-gray-900 uppercase leading-none mb-1">${item.name}</span>
+                            <span class="text-[9px] font-bold text-brand uppercase tracking-tighter">${item.sku}</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center bg-white rounded-lg border border-gray-200 px-2 py-1">
+                                <button onclick="changeQty(${index}, -1)" class="text-xs font-bold px-1">-</button>
+                                <span class="text-[10px] font-black px-2">${item.qty}</span>
+                                <button onclick="changeQty(${index}, 1)" class="text-xs font-bold px-1">+</button>
+                            </div>
+                            <button onclick="removeFromCart(${index})" class="text-red-500 text-xs font-black"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>`;
             });
             document.getElementById('cart-count').innerText = cart.length;
             document.getElementById('cart-count').classList.toggle('hidden', cart.length === 0);
-            document.getElementById('form-order-data').value = cart.map(i => i.sku).join(', ');
+            
+            // Gerar texto para o formulário
+            const summary = cart.map(i => `PRODUTO: ${i.name} | SKU: ${i.sku} | QTD: ${i.qty}`).join('\n');
+            document.getElementById('form-order-data').value = summary;
+        }
+
+        function changeQty(index, val) {
+            cart[index].qty += val;
+            if(cart[index].qty < 1) cart.splice(index, 1);
+            updateCartUI();
         }
 
         function removeFromCart(index) {
@@ -287,6 +277,51 @@
             else if (open === false) panel.classList.add('translate-x-full');
             else panel.classList.toggle('translate-x-full');
         }
+
+        // Lógica de Envio Sem Sair da Página
+        const form = document.getElementById("orderForm");
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();
+            if (cart.length === 0) return alert("O carrinho está vazio!");
+
+            const status = document.getElementById("form-status");
+            const btn = document.getElementById("submit-btn");
+            
+            btn.disabled = true;
+            btn.innerText = "ENVIANDO...";
+            status.classList.remove("hidden");
+            status.innerText = "A processar...";
+
+            const data = new FormData(event.target);
+            fetch("https://formspree.io/f/xqeworjj", {
+                method: "POST",
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    status.innerText = "SUCESSO! Pedido enviado.";
+                    status.style.color = "green";
+                    cart = [];
+                    updateCartUI();
+                    setTimeout(() => { 
+                        toggleCart(false); 
+                        status.classList.add("hidden");
+                        btn.disabled = false;
+                        btn.innerText = "Finalizar Pedido";
+                    }, 2000);
+                } else {
+                    status.innerText = "ERRO ao enviar. Tente novamente.";
+                    status.style.color = "red";
+                    btn.disabled = false;
+                    btn.innerText = "Finalizar Pedido";
+                }
+            }).catch(error => {
+                status.innerText = "ERRO de conexão.";
+                status.style.color = "red";
+                btn.disabled = false;
+                btn.innerText = "Finalizar Pedido";
+            });
+        });
     </script>
 </body>
 </html>
