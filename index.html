@@ -49,16 +49,18 @@
                     <button onclick="setLanguage('en')" class="px-2 py-1 rounded-lg hover:bg-white transition" id="lang-en">EN</button>
                     <button onclick="setLanguage('fr')" class="px-2 py-1 rounded-lg hover:bg-white transition" id="lang-fr">FR</button>
                 </div>
+
                 <div id="txt-nav-badge" class="text-[10px] font-black text-gray-400 uppercase tracking-widest bg-gray-100 px-3 py-1 rounded-full">
                     Dashboard
                 </div>
+
+                <div class="h-6 w-[1px] bg-gray-200"></div>
+
+                <button onclick="logout()" class="flex items-center gap-2 bg-red-50 text-red-600 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase hover:bg-red-100 transition active:scale-95">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span id="txt-logout">Sair</span>
+                </button>
             </div>
-                    <div class="h-6 w-[1px] bg-gray-200 mx-1"></div>
-                    <button onclick="logout()" class="flex items-center space-x-2 bg-red-50 text-red-600 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-red-100 transition">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <span data-pt="Sair" data-en="Logout" data-fr="Quitter">Sair</span>
-                    </button>
-                </div>
         </div>
     </nav>
 
@@ -100,21 +102,24 @@
                 navBadge: "Painel de Controlo",
                 mod1: "Catálogo",
                 mod2: "Catálogo Personalizado",
-                footer: "© 2026 EuroDrop. Conteúdo Confidencial."
+                footer: "© 2026 EuroDrop. Conteúdo Confidencial.",
+                logout: "Sair"
             },
             en: {
                 welcome: "Welcome.",
                 navBadge: "Dashboard",
                 mod1: "Catalog",
                 mod2: "Personalized Catalog",
-                footer: "© 2026 EuroDrop. Confidential Content."
+                footer: "© 2026 EuroDrop. Confidential Content.",
+                logout: "Logout"
             },
             fr: {
                 welcome: "Bienvenue.",
                 navBadge: "Tableau de Bord",
                 mod1: "Catalogue",
                 mod2: "Catalogue Personnalisé",
-                footer: "© 2026 EuroDrop. Contenu Confidentiel."
+                footer: "© 2026 EuroDrop. Contenu Confidentiel.",
+                logout: "Quitter"
             }
         };
 
@@ -125,6 +130,7 @@
             document.getElementById('txt-mod-1').innerText = t.mod1;
             document.getElementById('txt-mod-2').innerText = t.mod2;
             document.getElementById('txt-footer').innerText = t.footer;
+            document.getElementById('txt-logout').innerText = t.logout;
 
             ['pt', 'en', 'fr'].forEach(l => {
                 document.getElementById(`lang-${l}`).classList.toggle('bg-white', l === lang);
@@ -132,7 +138,13 @@
             });
         }
 
-        setLanguage('en');
+        function logout() {
+            sessionStorage.removeItem('auth_catalogo');
+            window.location.replace("https://eurodrop.pt");
+        }
+
+        // Iniciar com PT por padrão
+        setLanguage('pt');
     </script>
 </body>
 </html>
