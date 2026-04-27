@@ -3,10 +3,10 @@
 <head>
     <script>
         (function() {
-            const PASS_CORRETA = "euro2026"; 
+            const CORRECT_PASSWORD = "euro2026"; 
             if (sessionStorage.getItem('auth_catalogo') !== 'true') {
-                let tentativa = prompt("Acesso Privado EuroDrop. Insira a palavra-passe:");
-                if (tentativa === PASS_CORRETA) {
+                let tentativa = prompt("EuroDrop Private Access. Enter the password:");
+                if (tentativa === CORRECT_PASSWORD) {
                     sessionStorage.setItem('auth_catalogo', 'true');
                 } else {
                     alert("Acesso negado.");
