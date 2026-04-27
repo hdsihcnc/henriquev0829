@@ -56,32 +56,32 @@
         </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center px-6 py-20">
+    <main class="flex-grow flex items-center justify-center px-6 py-10">
         <div class="max-w-4xl w-full">
-            <div class="text-center mb-16" data-aos="fade-down">
-                <h1 id="txt-welcome" class="text-5xl font-black text-gray-900 mb-4 tracking-tighter uppercase italic">Bem-vindo.</h1>
+            <div class="text-center mb-10" data-aos="fade-down">
+                <h1 id="txt-welcome" class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tighter uppercase italic">Bem-vindo.</h1>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <a href="catalogo.html" class="group bg-white p-12 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center" data-aos="fade-right">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="catalogo.html" class="group bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center" data-aos="fade-right">
                     <div class="w-20 h-20 bg-blue-50 text-brand rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                         <i class="fa-solid fa-layer-group text-3xl"></i>
                     </div>
-                    <h3 id="txt-mod-1" class="text-2xl font-black text-gray-900 uppercase">Catálogo</h3>
+                    <h3 id="txt-mod-1" class="text-xl font-black text-gray-900 uppercase tracking-tight">Catálogo</h3>
                 </a>
 
-                <a href="personalized-catalog.html" class="group bg-white p-12 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center" data-aos="fade-left">
+                <a href="personalized-catalog.html" class="group bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center" data-aos="fade-left">
                     <div class="w-20 h-20 bg-gray-50 text-gray-400 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                        <i class="fa-solid fa-wand-magic-sparkles text-3xl"></i>
+                        <i class="fa-solid fa-clipboard-list text-3xl"></i>
                     </div>
-                    <h3 id="txt-mod-2" class="text-2xl font-black text-gray-900 uppercase">Catálogo Personalizado</h3>
+                    <h3 id="txt-mod-2" class="text-xl font-black text-gray-900 uppercase tracking-tight">Catálogo Personalizado</h3>
                 </a>
             </div>
         </div>
     </main>
 
-    <footer class="py-10 text-center text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">
-        &copy; 2026 EuroDrop.
+    <footer class="pb-6 text-center text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">
+        <span id="txt-footer">© 2026 EuroDrop. Conteúdo Confidencial.</span>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -93,19 +93,22 @@
                 welcome: "Bem-vindo.",
                 navBadge: "Painel de Controlo",
                 mod1: "Catálogo",
-                mod2: "Catálogo Personalizado"
+                mod2: "Catálogo Personalizado",
+                footer: "© 2026 EuroDrop. Conteúdo Confidencial."
             },
             en: {
                 welcome: "Welcome.",
                 navBadge: "Dashboard",
                 mod1: "Catalog",
-                mod2: "Personalized Catalog"
+                mod2: "Personalized Catalog",
+                footer: "© 2026 EuroDrop. Confidential Content."
             },
             fr: {
                 welcome: "Bienvenue.",
                 navBadge: "Tableau de Bord",
                 mod1: "Catalogue",
-                mod2: "Catalogue Personnalisé"
+                mod2: "Catalogue Personnalisé",
+                footer: "© 2026 EuroDrop. Contenu Confidentiel."
             }
         };
 
@@ -115,6 +118,7 @@
             document.getElementById('txt-nav-badge').innerText = t.navBadge;
             document.getElementById('txt-mod-1').innerText = t.mod1;
             document.getElementById('txt-mod-2').innerText = t.mod2;
+            document.getElementById('txt-footer').innerText = t.footer;
 
             ['pt', 'en', 'fr'].forEach(l => {
                 document.getElementById(`lang-${l}`).classList.toggle('bg-white', l === lang);
